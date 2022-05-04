@@ -1,0 +1,8 @@
+[book]
+authors = ["timurgordon"]
+language = "en"
+multilingual = false
+src = "src"
+title = "test-book"
+[preprocessor.mdbook_preprocessor]
+command = "v run mdbook_preprocessor.v"
