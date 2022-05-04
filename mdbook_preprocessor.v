@@ -18,10 +18,23 @@ fn main() {
 
 	mut file := os.stdin()
 	mut bufs := []u8{}
-	mut code := (&file).read(mut &bufs) ?
 	file_str := bufs.bytestr()
 	file.close()
 	test(file_str)
+}
+
+// gets json array, retuurn
+fn json_split_array(json_str string) {
+	tokens := ['[', ']', '{', '}']
+	token := ''
+	for mut char in json_str {
+		// if char.ascii_str() =
+		if char in tokens {
+			token = char
+			println(char + 1)
+		}
+		println(char)
+	}
 }
 
 // uncomment lines 51 or 54 to see decoding into array of sum type doesn't work
@@ -50,6 +63,7 @@ fn test(file_str string) {
 	}
 	// panic(decoded_mdbook[1]) // prints "unknown sum type value"
 
+	json_split_array(mdbook_str)
 	processed_book := decoded_book
 	// processed_book := decoded_mdbook[1] // doesn't work
 
