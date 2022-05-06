@@ -1,24 +1,14 @@
-# An Interesting Thing
-> Press `alt+p` to toggle which version is displayed.
-> Open the console to see the notes printed there
+# This is an example chapter
 
-$web-only$
-Here is a much longer explanation about what this
-interesting thing is and how interesting you might find it.
+Lets see how this parser works.
+I will be adding a smiley face to the end of each chapter.
 
-To elaborate, it is extremely interesting.
-$web-only-end$
+## Sample list
 
-$slides-only$
-## A list of things
-- Fact one is intriguing
-- Fact two is piquing my interest
-- Fact three has me down right flabbergasted
-- Fact four is almost obscene
-$slides-only-end$
+- build preprocessor
+- build book
+- test preprocessor
 
-$notes$
-- Don't for get to mention this
-- And This
-- And This
-$notes-end$
+## Smiley face
+
+smiley face should be at the end of this sentence.

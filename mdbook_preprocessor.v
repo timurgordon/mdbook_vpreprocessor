@@ -16,25 +16,40 @@ fn main() {
 		}
 	}
 
-	mut file := os.stdin()
-	mut bufs := []u8{}
-	file_str := bufs.bytestr()
-	file.close()
-	test(file_str)
+	// receives and parses json book into MDBook:Book
+	lines := os.get_lines()
+	split := json_split_array(lines[0])[1]
+	mut book := json.decode(Book, json_split_array(lines[0])[1]) or { panic('error $err') }
+
+	// add processor here, change book in place
+	some_process(mut &book)
+
+	// outputs processed book to compile
+	println(json.encode(&book)#[..-1] + ',"__non_exhaustive":null}')
 }
 
-// gets json array, retuurn
-fn json_split_array(json_str string) {
-	tokens := ['[', ']', '{', '}']
-	token := ''
-	for mut char in json_str {
-		// if char.ascii_str() =
-		if char in tokens {
-			token = char
-			println(char + 1)
-		}
-		println(char)
+// example process
+fn some_process(mut book Book) {
+	for mut section in book.sections {
+		section.chapter.content += ' :)'
 	}
+}
+
+// gets json array, return split array
+fn json_split_array(file_str string) []string {
+	tokens := ['[', '{']
+	mut token_buf := []u8{}
+	for i, char in file_str[1..] {
+		// found array separation
+		if token_buf.len == 0 && char.ascii_str() == ',' {
+			return [file_str[1..i + 1], file_str#[i + 2..-1]]
+		} else if char.ascii_str() in tokens {
+			token_buf << char
+		} else if char == token_buf.last() + 2 {
+			token_buf.pop()
+		}
+	}
+	return [file_str]
 }
 
 // uncomment lines 51 or 54 to see decoding into array of sum type doesn't work
@@ -69,5 +84,5 @@ fn test(file_str string) {
 
 	// formatting for rust, must have __non_exhaustive at end.
 	encoded_book := json.encode(processed_book)#[..-1] + ',"__non_exhaustive":null}'
-	println(encoded_book)
+	// println(encoded_book)
 }

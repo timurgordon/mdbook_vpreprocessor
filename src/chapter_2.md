@@ -1,23 +1,14 @@
-# Another Interesting Thing
-> Press `alt+p` to toggle which version is displayed.
-> Open the console to see the notes printed there
+# This is example chapter 2
 
-$web-only$
-Continuing the explanation from earlier.
+Not much different than first.
+Lets see how this parser works.
 
-This is an elaboration on the very interesting
-things from the last page.
-$web-only-end$
+## Sample list 2
 
-$slides-only$
-## Another list of things
-- Fact five is more intriguing
-- Fact six is piquing my interest, further
-- Fact seven has me down right shell-shocked
-- Fact eight is obscene
-$slides-only-end$
+- build preprocessor
+- build book
+- test preprocessor
 
-$notes$
-- Pit-fall 1: stuff
-- Pit-fall 2: other stuff
-$notes-end$
+## Smiley face
+
+smiley face should be at the end of this sentence.
