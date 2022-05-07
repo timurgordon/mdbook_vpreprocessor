@@ -1,6 +1,8 @@
 # mdbook_vpreprocessor
 
-Demonstrates that an array of sum type of PreprocessorContext and Book can't be used to decode MDBook into aforementioned structs.
+1. Turns MDBook json string into MDBook structs in Vlang.
+2. Delivers Book struct to process.
+3. Encodes and outputs processed book to MDBook compiler.
 
 ## To Run
 
@@ -8,10 +10,23 @@ Demonstrates that an array of sum type of PreprocessorContext and Book can't be 
 mdbook build
 ```
 
+## To Process
+
+Add your processing function where some_process() is, and pass in mut book.
+
+```
+fn main() {
+    ...
+
+	// add processor here, mutate book
+	some_process(mut &book)
+
+	...
+}
+```
+
 ## Test
 
-The commented parts in test can be uncommented to demonstrate.
+The test function attempts to decode the entire stringified MDBook array into an array of PreprocessorContext and Book sum type array, however fails to do so.
 
-Note: because mdbook compiler expects stdout, any printed line is not outputted to terminal yet consumed by the compiler.
-
-- To output to terminal use panic()
+Left in code to look into it.
